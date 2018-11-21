@@ -1,0 +1,5 @@
+#!/bin/bash
+export PATH="$PATH:$SNAP/usr/sbin:$SNAP/sbin:/snap/bin"
+export PYTHONPATH="$SNAP/usr/lib/python3/dist-packages:$PYTHONPATH"
+cd $HOME
+exec python3 $(which checkbox-cli) "$@"

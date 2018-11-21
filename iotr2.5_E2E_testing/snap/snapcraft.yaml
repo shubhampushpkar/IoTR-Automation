@@ -1,0 +1,26 @@
+name: iotr2-automation
+version: 1.1
+summary: Checkbox tool for iotr2.5 test automation
+description: Checkbox tool to test the feature of iotr2.5 device
+grade: devel
+confinement: devmode
+
+parts:
+    plainbox-provider-automation:
+        plugin: plainbox-provider
+        source: ./plainbox-provider-automation
+        after: [plainbox]
+    launchers:
+        plugin: dump
+        source: launchers/
+        organize:
+            '*': bin/
+    plainbox:
+       plugin: nil
+       stage-packages:
+            - plainbox
+            - checkbox-ng
+
+apps:
+    test-runner:
+        command: bin/test-runner
